@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class walkingAnim : MonoBehaviour
 {
-    private Animator a;
+     Animator a;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +18,28 @@ public class walkingAnim : MonoBehaviour
         if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D))
         {
             a.SetBool("moving", true);
-        }else
+        }
+        else
         {
              a.SetBool("moving", false);
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            a.SetBool("isJumping", true);
+        }
+        else
+        {
+            a.SetBool("isJumping", false);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            a.SetBool("isRunning", true);
+        }
+        else
+        {
+            a.SetBool("isRunning", false);
         }
     }
 }
