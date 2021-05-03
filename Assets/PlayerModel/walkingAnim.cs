@@ -6,6 +6,7 @@ public class walkingAnim : MonoBehaviour
 {
      Animator a;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,5 +42,7 @@ public class walkingAnim : MonoBehaviour
         {
             a.SetBool("isRunning", false);
         }
+
+        
     }
 }
