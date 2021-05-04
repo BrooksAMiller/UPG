@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,11 +10,15 @@ public class EnemyController : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     Animator a;
+    public ThirdPersonCharacter character;
+    public GameObject gameObject;
 
     void Start()
     {
+        
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
         a = GetComponent<Animator>();
 
     }
@@ -25,8 +30,13 @@ public class EnemyController : MonoBehaviour
 
         if (distance <= lookRadius)
         {
-            a.SetBool("isReacting", true);
+            a.SetBool("isWalking", true);
             agent.SetDestination(target.position);
+            gameObject.transform.position = target.position;
+        }
+        else
+        {
+            a.SetBool("isWalking", false);
         }
 
     }
