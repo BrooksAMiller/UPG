@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TaskList : MonoBehaviour
 {
 
-    PickUpScript pus = new PickUpScript();
 
     public GameObject taskUI;
     public Toggle walkCheckBox;
