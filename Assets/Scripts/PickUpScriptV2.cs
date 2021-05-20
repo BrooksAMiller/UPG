@@ -7,10 +7,12 @@ public class PickUpScriptV2 : MonoBehaviour
     public Transform location;
     public Material highlightColor;
     public GameObject player;
+    public GameObject particles;
 
     private void Start()
     {
-        this.GetComponent<ParticleSystem>().Stop();
+        
+  
 
     }
 
@@ -27,13 +29,17 @@ public class PickUpScriptV2 : MonoBehaviour
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
         if(dist < 3)
         {
+            //this.GetComponent<ParticleSystem>().Play();
             Debug.Log("Close!");
-            this.GetComponent<ParticleSystem>().Play();
+            particles.SetActive(true);
+
         }
         else if (dist > 3 && dist > 6)
         {
-            this.GetComponent<ParticleSystem>().Stop();
+            //this.GetComponent<ParticleSystem>().Stop();
             Debug.Log("Far");
+            particles.SetActive(false);
+
         }
     }
 }
