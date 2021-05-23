@@ -28,11 +28,10 @@ public class PickUpScriptV2 : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 PickUp();
-                particles.SetActive(false);
+                Component halo = GetComponent("Halo");
+                halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
+
             }
-            
-            
-            
         }
         
     }
@@ -44,18 +43,21 @@ public class PickUpScriptV2 : MonoBehaviour
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
         if(dist < 3)
         {
-            //this.GetComponent<ParticleSystem>().Play();
-            Debug.Log("Close!");
-            particles.SetActive(true);
-            isHighlighted = true;
+            //Debug.Log("Close!");
+            //particles.SetActive(true);
 
+            Component halo = GetComponent("Halo");
+            halo.GetType().GetProperty("enabled").SetValue(halo, true, null);
+            isHighlighted = true;
 
         }
         else if (dist > 3 && dist > 6)
         {
-            //this.GetComponent<ParticleSystem>().Stop();
-            Debug.Log("Far");
-            particles.SetActive(false);
+            //Debug.Log("Far");
+            //particles.SetActive(false);
+
+            Component halo = GetComponent("Halo");
+            halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
             isHighlighted = false;
 
         }
